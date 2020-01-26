@@ -4,7 +4,7 @@ Retorna o hotel mais barato baseado nas datas e tipo do cliente.
 
 Formato da entrada:
 
-<tipo_do_cliente>: <data1>, <data2>, <data3>, …
+{tipo_do_cliente}: {data1}, {data2}, {data3}, ...
 
 Formato da saída:
 
