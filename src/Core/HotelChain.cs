@@ -14,13 +14,17 @@ namespace Core
 
         public static (HotelChain hotelChain, bool result) Construct(IList<Hotel> hotels)
         {
-            var fail = (hotelChain: (HotelChain)null, result: false);
+            var returnResult = (hotelChain: (HotelChain)null, result: false);
 
-            if (hotels == null) return fail;
-            if (hotels.Count <= 0) return fail;
+            if (hotels == null) return returnResult;
+            if (hotels.Count <= 0) return returnResult;
 
             var hotelChain = new HotelChain(hotels);
-            return (hotelChain: hotelChain, result: true);
+
+            returnResult.hotelChain = hotelChain;
+            returnResult.result = true;
+            
+            return returnResult;
         }
 
         public (string cheaper, bool result) CalculateCheaper(CustomerType customerType, int weekDaysAmount, int weekendDaysAmount)

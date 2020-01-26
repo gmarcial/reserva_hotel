@@ -23,33 +23,40 @@ namespace Core
 
         public static (Hotel hotel, bool result) Construct(string name, int classification, float dayWeekValue, float dayWeekendValue, float dayWeekRewardValue, float dayWeekendRewardValue)
         {
-            var fail = (hotel: (Hotel)null, result: false);
+            var returnResult = (hotel: (Hotel)null, result: false);
 
-            if (string.IsNullOrEmpty(name)) return fail;
-            if (classification < 0) return fail;
-            if (dayWeekValue <= 0) return fail;
-            if (dayWeekendValue <= 0) return fail;
-            if (dayWeekRewardValue <= 0) return fail;
-            if (dayWeekendRewardValue <= 0) return fail;
+            if (string.IsNullOrEmpty(name)) return returnResult;
+            if (classification < 0) return returnResult;
+            if (dayWeekValue <= 0) return returnResult;
+            if (dayWeekendValue <= 0) return returnResult;
+            if (dayWeekRewardValue <= 0) return returnResult;
+            if (dayWeekendRewardValue <= 0) return returnResult;
 
-            return (hotel: new Hotel(name, classification, dayWeekValue, dayWeekendValue, dayWeekRewardValue, dayWeekendRewardValue), result: true);
+            returnResult.hotel = new Hotel(name, classification, dayWeekValue, dayWeekendValue, dayWeekRewardValue, dayWeekendRewardValue);
+            returnResult.result = true;
+            
+            return returnResult;
         }
 
         public (float totalValue, bool result) CalculateDaysValue(CustomerType type, int weekDaysAmount, int weekendDaysAmount)
         {
-            var fail = (totalValue: 0, result: false);
-            if(!Enum.IsDefined(typeof(CustomerType), type)) return fail;
+            var returnResult = (totalValue: 0f, result: false);
+            if(!Enum.IsDefined(typeof(CustomerType), type)) return returnResult;
 
             switch (type)
             {
                 case CustomerType.Regular:
-                    return (calculateRegularDaysValue(weekDaysAmount, weekendDaysAmount), true);
+                    returnResult.totalValue = calculateRegularDaysValue(weekDaysAmount, weekendDaysAmount);
+                    returnResult.result = true;
+                    return returnResult;
 
                 case CustomerType.Reward:
-                    return (calculateRewardDaysValue(weekDaysAmount, weekendDaysAmount), true);
+                    returnResult.totalValue = calculateRewardDaysValue(weekDaysAmount, weekendDaysAmount);
+                    returnResult.result = true;
+                    return returnResult;
 
                 default:
-                    return fail;
+                    return returnResult;
             }
         }
 
