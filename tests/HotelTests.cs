@@ -23,7 +23,7 @@ namespace Tests
             Assert.NotNull(hotel);
             Assert.True(result);
 
-            Assert.Equal(name, hotel.Name);
+            Assert.Equal(name, hotel!.Name);
             Assert.Equal(classification, hotel.Classification);
             Assert.Equal(weeklyValue, hotel.WeeklyValue);
             Assert.Equal(weekendValue, hotel.WeekendValue);
@@ -175,7 +175,7 @@ namespace Tests
             var (hotel, _) = Hotel.Construct(name, classification, weeklyValue, weekendValue, weeklyValueReward, weekendValueReward);
 
             //Action
-            var (totalValue, result) = hotel.CalculateDaysValue(CustomerType.Regular, weekDaysAmount, weekendDaysAmount);
+            var (totalValue, result) = hotel!.CalculateDaysValue(CustomerType.Regular, weekDaysAmount, weekendDaysAmount);
 
             //Assert
             Assert.True(result);
@@ -203,7 +203,7 @@ namespace Tests
             var (hotel, _) = Hotel.Construct(name, classification, weeklyValue, weekendValue, weeklyValueReward, weekendValueReward);
 
             //Action
-            var (totalValue, result) = hotel.CalculateDaysValue(CustomerType.Reward, weekDaysAmount, weekendDaysAmount);
+            var (totalValue, result) = hotel!.CalculateDaysValue(CustomerType.Reward, weekDaysAmount, weekendDaysAmount);
 
             //Assert
             Assert.True(result);

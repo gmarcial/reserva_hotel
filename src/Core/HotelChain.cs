@@ -12,11 +12,11 @@ namespace Core
             this.hotels = hotels;
         }
 
-        public static (HotelChain hotelChain, bool result) Construct(IList<Hotel> hotels)
+        public static (HotelChain? hotelChain, bool result) Construct(IList<Hotel> hotels)
         {
-            var returnResult = (hotelChain: (HotelChain)null, result: false);
+            var returnResult = (hotelChain: (HotelChain?)null, result: false);
 
-            if (hotels == null) return returnResult;
+            hotels = (hotels ?? new List<Hotel>());
             if (hotels.Count <= 0) return returnResult;
 
             var hotelChain = new HotelChain(hotels);
@@ -27,13 +27,13 @@ namespace Core
             return returnResult;
         }
 
-        public (string cheaper, bool result) CalculateCheaper(CustomerType customerType, int weekDaysAmount, int weekendDaysAmount)
+        public (string? cheaper, bool result) CalculateCheaper(CustomerType customerType, int weekDaysAmount, int weekendDaysAmount)
         {
             var lastCheaperName = "";
             float lastCheaperResult = 0;
             var lastCheaperClassification = 0;
 
-            var returnResult = (cheaper: (string)null, result: false);
+            var returnResult = (cheaper: (string?)null, result: false);
 
             foreach (var hotel in this.hotels)
             {

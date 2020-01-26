@@ -14,7 +14,7 @@ namespace Tests
             var (bridgewood, _) = Hotel.Construct("Bridgewood", 4, 160, 110, 60, 50);
             var (ridgewood, _) = Hotel.Construct("Ridgewood", 5, 220, 100, 150, 40);
 
-            var hotels = new List<Hotel> { lakewood, bridgewood, ridgewood };
+            var hotels = new List<Hotel> { lakewood!, bridgewood!, ridgewood! };
 
             //Action
             var (hotelChain, result) = HotelChain.Construct(hotels);
@@ -23,19 +23,7 @@ namespace Tests
             Assert.NotNull(hotelChain);
             Assert.True(result);
 
-            Assert.Equal(hotels.Count, hotelChain.Quantity);
-        }
-
-        [Fact]
-        public void DontShouldInstantiateAHotelChainWhenHotelIsNull()
-        {
-            //Arrange
-            //Action
-            var (hotelChain, result) = HotelChain.Construct(null);
-
-            //Assert
-            Assert.False(result);
-            Assert.Null(hotelChain);
+            Assert.Equal(hotels.Count, hotelChain!.Quantity);
         }
 
         [Fact]
@@ -63,12 +51,12 @@ namespace Tests
             var (bridgewood, _) = Hotel.Construct("Bridgewood", 4, 160, 60, 110, 50);
             var (ridgewood, _) = Hotel.Construct("Ridgewood", 5, 220, 150, 100, 40);
 
-            var hotels = new List<Hotel> { lakewood, bridgewood, ridgewood };
+            var hotels = new List<Hotel> { lakewood!, bridgewood!, ridgewood! };
 
             var (hotelChain, _) = HotelChain.Construct(hotels);
 
             //Action
-            var (hotelCheaper, result) = hotelChain.CalculateCheaper(customerType, weekDaysAmount, weekendDaysAmount);
+            var (hotelCheaper, result) = hotelChain!.CalculateCheaper(customerType, weekDaysAmount, weekendDaysAmount);
 
             //Assert
             Assert.True(result);

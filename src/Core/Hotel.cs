@@ -21,9 +21,9 @@ namespace Core
             WeekendValueReward = weekendValueReward;
         }
 
-        public static (Hotel hotel, bool result) Construct(string name, int classification, float dayWeekValue, float dayWeekendValue, float dayWeekRewardValue, float dayWeekendRewardValue)
+        public static (Hotel? hotel, bool result) Construct(string name, int classification, float dayWeekValue, float dayWeekendValue, float dayWeekRewardValue, float dayWeekendRewardValue)
         {
-            var returnResult = (hotel: (Hotel)null, result: false);
+            var returnResult = (hotel: (Hotel?)null, result: false);
 
             if (string.IsNullOrEmpty(name)) return returnResult;
             if (classification < 0) return returnResult;
