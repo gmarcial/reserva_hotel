@@ -1,4 +1,4 @@
-namespace core
+namespace Core
 {
     public enum CustomerType
     {

@@ -1,7 +1,7 @@
-using core;
+using Core;
 using Xunit;
 
-namespace tests
+namespace Tests
 {
     public class HotelTests
     {
