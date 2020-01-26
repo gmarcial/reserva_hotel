@@ -16,6 +16,7 @@ namespace Cli
             var daysAmount = Utils.CountDaysAmount(args);
 
             var interError = "Houve um erro interno referente a rede de hoteis.";
+            
             var (nerio, resultNerio) = Hotel.Construct("Nerio", 3, 110, 90, 80, 80);
             if (!resultNerio) Utils.Error(interError);
 
