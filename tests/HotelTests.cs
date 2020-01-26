@@ -9,7 +9,7 @@ namespace Tests
         public void ShouldInstantiateWithSuccessAHotel()
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 3;
             var weeklyValue = 110;
             var weekendValue = 80;
@@ -58,7 +58,7 @@ namespace Tests
         public void DontShouldInstantiateAHotelWhenClassificaitonIsLessThanZero(int classification)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var weeklyValue = 110f;
             var weekendValue = 80f;
             var weeklyValueReward = 90f;
@@ -79,7 +79,7 @@ namespace Tests
         public void DontShouldInstantiateAHotelWhenWeeklyValueIsLessThanOrEqualTheZero(float weeklyValue)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 5;
             var weekendValue = 80f;
             var weeklyValueReward = 90f;
@@ -100,7 +100,7 @@ namespace Tests
         public void DontShouldInstantiateAHotelWhenWeekendValueIsLessThanOrEqualTheZero(float weekendValue)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 5;
             var weeklyValue = 10f;
             var weeklyValueReward = 90f;
@@ -121,7 +121,7 @@ namespace Tests
         public void DontShouldInstantiateAHotelWhenWeeklyValueRewardIsLessThanOrEqualTheZero(float weeklyValueReward)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 5;
             var weeklyValue = 10f;
             var weekendValue = 80f;
@@ -142,7 +142,7 @@ namespace Tests
         public void DontShouldInstantiateAHotelWhenWeekendValueRewardIsLessThanOrEqualTheZero(float weekendValueReward)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 5;
             var weeklyValue = 10f;
             var weekendValue = 80f;
@@ -163,7 +163,7 @@ namespace Tests
         public void ShouldCalculateTheTotalValueTheToBePayStartingOfTheQuantityRegularDays(int weekDaysAmount, int weekendDaysAmount)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 3;
             var weeklyValue = 110;
             var weekendValue = 80;
@@ -191,7 +191,7 @@ namespace Tests
         public void ShouldCalculateTheTotalValueTheToBePayStartingOfTheQuantityRewardDays(int weekDaysAmount, int weekendDaysAmount)
         {
             //Arrange
-            var name = "Lakewood";
+            var name = "Nerio";
             var classification = 3;
             var weeklyValue = 110;
             var weekendValue = 80;
@@ -203,7 +203,7 @@ namespace Tests
             var (hotel, _) = Hotel.Construct(name, classification, weeklyValue, weekendValue, weeklyValueReward, weekendValueReward);
 
             //Action
-            var (totalValue, result) = hotel!.CalculateDaysValue(CustomerType.Reward, weekDaysAmount, weekendDaysAmount);
+            var (totalValue, result) = hotel!.CalculateDaysValue(CustomerType.Rewards, weekDaysAmount, weekendDaysAmount);
 
             //Assert
             Assert.True(result);

@@ -10,11 +10,11 @@ namespace Tests
         public void ShouldInstantiateWithSuccessAHotelChain()
         {
             //Arrange
-            var (lakewood, _) = Hotel.Construct("Lakewood", 3, 110, 80, 90, 80);
-            var (bridgewood, _) = Hotel.Construct("Bridgewood", 4, 160, 110, 60, 50);
-            var (ridgewood, _) = Hotel.Construct("Ridgewood", 5, 220, 100, 150, 40);
+            var (nerio, _) = Hotel.Construct("Nerio", 3, 110, 80, 90, 80);
+            var (coimbra, _) = Hotel.Construct("Coimbra", 4, 160, 110, 60, 50);
+            var (manso, _) = Hotel.Construct("Manso", 5, 220, 100, 150, 40);
 
-            var hotels = new List<Hotel> { lakewood!, bridgewood!, ridgewood! };
+            var hotels = new List<Hotel> { nerio!, coimbra!, manso! };
 
             //Action
             var (hotelChain, result) = HotelChain.Construct(hotels);
@@ -41,17 +41,17 @@ namespace Tests
         }
 
         [Theory]
-        [InlineData(CustomerType.Regular, 3, 0, "Lakewood")]
-        [InlineData(CustomerType.Regular, 1, 2, "Bridgewood")]
-        [InlineData(CustomerType.Reward, 2, 1, "Ridgewood")]
+        [InlineData(CustomerType.Regular, 3, 0, "Nerio")]
+        [InlineData(CustomerType.Regular, 1, 2, "Coimbra")]
+        [InlineData(CustomerType.Rewards, 2, 1, "Manso")]
         public void ShouldIndicateTheHotelCheaperAtThePeriodOfDatesOfAReservationAndTheTypeOfCustomer(CustomerType customerType, int weekDaysAmount, int weekendDaysAmount, string expectedResult)
         {
             //Arrange
-            var (lakewood, _) = Hotel.Construct("Lakewood", 3, 110, 90, 80, 80);
-            var (bridgewood, _) = Hotel.Construct("Bridgewood", 4, 160, 60, 110, 50);
-            var (ridgewood, _) = Hotel.Construct("Ridgewood", 5, 220, 150, 100, 40);
+            var (nerio, _) = Hotel.Construct("Nerio", 3, 110, 90, 80, 80);
+            var (coimbra, _) = Hotel.Construct("Coimbra", 4, 160, 60, 110, 50);
+            var (manso, _) = Hotel.Construct("Manso", 5, 220, 150, 100, 40);
 
-            var hotels = new List<Hotel> { lakewood!, bridgewood!, ridgewood! };
+            var hotels = new List<Hotel> { nerio!, coimbra!, manso! };
 
             var (hotelChain, _) = HotelChain.Construct(hotels);
 

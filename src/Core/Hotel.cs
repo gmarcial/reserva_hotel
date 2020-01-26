@@ -50,7 +50,7 @@ namespace Core
                     returnResult.result = true;
                     return returnResult;
 
-                case CustomerType.Reward:
+                case CustomerType.Rewards:
                     returnResult.totalValue = calculateRewardDaysValue(weekDaysAmount, weekendDaysAmount);
                     returnResult.result = true;
                     return returnResult;
